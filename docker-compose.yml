@@ -1,0 +1,18 @@
+name: ssoservice
+services:
+  sso:
+    container_name: sso
+    build:
+      dockerfile: ./HTTPD/Dockerfile.httpd
+    ports:
+      - 8880:80
+  nginx:
+    container_name: nginx
+    build:
+      dockerfile: ./NGINX/Dockerfile.nginx
+    ports:
+      - 8000:8000
+networks:
+  default:
+    name: sso_service
+    external: true
